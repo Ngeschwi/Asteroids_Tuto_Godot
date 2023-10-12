@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0i77pqehtcnr"]
+[gd_scene load_steps=6 format=3 uid="uid://b0i77pqehtcnr"]
 
 [ext_resource type="Script" path="res://Scenes/Level/Scripts/Level.gd" id="1_56qer"]
 [ext_resource type="PackedScene" uid="uid://b15fjodsj8kw2" path="res://Scenes/Player/player.tscn" id="1_wsbkv"]
 [ext_resource type="Script" path="res://Scenes/Level/Scripts/ProjectileFactory.gd" id="2_beex7"]
 [ext_resource type="PackedScene" uid="uid://bypmf7tpctcn7" path="res://Scenes/Asteriod/Asteriod.tscn" id="3_22bj8"]
+[ext_resource type="Texture2D" uid="uid://doir83im5rda2" path="res://Scenes/Level/Sprites/Background.png" id="5_nwem6"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_56qer")
@@ -34,4 +35,13 @@ layout_mode = 2
 
 [node name="Asteriods" type="Node2D" parent="."]
 
+[node name="SpawnTimer" type="Timer" parent="Asteriods"]
+autostart = true
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(238, 136)
+texture = ExtResource("5_nwem6")
+
 [connection signal="projectile_fire" from="Player" to="ProjectileFactory" method="spawn_projectile"]
+[connection signal="timeout" from="Asteriods/SpawnTimer" to="." method="_on_spawn_timer_timeout"]
