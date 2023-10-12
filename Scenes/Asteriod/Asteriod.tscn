@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bypmf7tpctcn7"]
+
+[ext_resource type="Script" path="res://Scenes/Asteriod/Scripts/Asteriod.gd" id="1_layxo"]
+[ext_resource type="Texture2D" uid="uid://dkbv1m7vkxsc" path="res://Scenes/Asteriod/Sprites/AsteroidBig.png" id="1_mg715"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mj5s2"]
+
+[node name="Asteriod" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_layxo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_mg715")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mj5s2")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

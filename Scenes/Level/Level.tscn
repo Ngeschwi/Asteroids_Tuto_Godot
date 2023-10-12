@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0i77pqehtcnr"]
+
+[ext_resource type="Script" path="res://Scenes/Level/Scripts/Level.gd" id="1_56qer"]
+[ext_resource type="PackedScene" uid="uid://b15fjodsj8kw2" path="res://Scenes/Player/player.tscn" id="1_wsbkv"]
+[ext_resource type="Script" path="res://Scenes/Level/Scripts/ProjectileFactory.gd" id="2_beex7"]
+[ext_resource type="PackedScene" uid="uid://bypmf7tpctcn7" path="res://Scenes/Asteriod/Asteriod.tscn" id="3_22bj8"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_56qer")
+asteriod_scene = ExtResource("3_22bj8")
+
+[node name="Player" parent="." instance=ExtResource("1_wsbkv")]
+position = Vector2(235, 129)
+
+[node name="ProjectileFactory" type="Node2D" parent="."]
+script = ExtResource("2_beex7")
+
+[node name="Border" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="Border"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = -20
+theme_override_constants/margin_top = -20
+theme_override_constants/margin_right = -20
+theme_override_constants/margin_bottom = -20
+
+[node name="BorderRect" type="ReferenceRect" parent="Border/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Asteriods" type="Node2D" parent="."]
+
+[connection signal="projectile_fire" from="Player" to="ProjectileFactory" method="spawn_projectile"]

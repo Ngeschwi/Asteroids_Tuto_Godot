@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://3jmjsxgftnyi"]
+
+[ext_resource type="Script" path="res://Scenes/Projectile/Scripts/Projectile.gd" id="1_uqwbp"]
+[ext_resource type="Texture2D" uid="uid://dgg3rq7k7cxvr" path="res://Scenes/Projectile/Sprites/ProjectileSpriteSheet.png" id="2_mmwg7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6kkm"]
+atlas = ExtResource("2_mmwg7")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dag0j"]
+atlas = ExtResource("2_mmwg7")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l28uu"]
+atlas = ExtResource("2_mmwg7")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1cipl"]
+atlas = ExtResource("2_mmwg7")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i3vgc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6kkm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dag0j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l28uu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1cipl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Projectile" type="Node2D"]
+script = ExtResource("1_uqwbp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_i3vgc")
+autoplay = "default"
+frame_progress = 0.494199
