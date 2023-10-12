@@ -14,6 +14,7 @@ var last_direction := Vector2.ZERO
 
 
 signal projectile_fire(projectile)
+signal destroyed
 
 
 func _ready() -> void:
@@ -58,4 +59,5 @@ func rotate_toward_mouse() -> void:
 
 
 func destroy() -> void:
+	destroyed.emit()
 	queue_free()

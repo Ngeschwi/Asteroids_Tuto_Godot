@@ -12,6 +12,7 @@ var screen_center = screen_size / 2.0
 
 @onready var border_rect = %BorderRect
 @onready var asteriods_container = $Asteriods
+@onready var gameover = %Gameover
 
 @export var spawn_circle_radius : float = 350.0
 
@@ -66,3 +67,11 @@ func _on_asteroid_destroyed(asteroid: Asteroid) -> void:
 
 func _on_spawn_timer_timeout() -> void:
 	spawn_asteroid_on_border()
+
+
+func _on_retry_button_pressed():
+	get_tree().reload_current_scene()
+
+
+func _on_player_destroyed():
+	gameover.show()
